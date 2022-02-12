@@ -1,0 +1,31 @@
+{
+  "name": "quarks_components",
+  "version": "0.1.1",
+  "author": "@ak",
+  "license": "MIT",
+  "description": "another styled library",
+  "main": "dist/quarks_components.es.js",
+  "module": "dist/quarks_components.es.js",
+  "types": "./src/quarks_components.d.ts",
+  "scripts": {
+    "build": "tsc && vite build",
+    "build:watch": "vite build --watch"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.5.5",
+    "vite": "^2.8.1",
+    "vite-dts": "^1.0.4"
+  },
+  "dependencies": {
+    "@mantine/hooks": "^3.6.7",
+    "@radix-ui/react-focus-scope": "^0.1.1",
+    "@radix-ui/react-popper": "^0.1.1",
+    "@radix-ui/react-scroll-area": "^0.1.1",
+    "observe-element-in-viewport": "^0.0.15",
+    "quarks_components": "^0.0.1"
+  }
+}

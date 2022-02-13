@@ -1,26 +1,27 @@
 import * as Alert from "./Alert"
-import * as BaseInput from "./BaseInput"
-import * as Button from "./Button"
-import * as Checkbox from "./Checkbox"
+import InputBase from "./BaseInput"
+import Button from "./Button"
+import Checkbox from "./Checkbox"
 import * as Collapsible from "./Collapsible"
-import * as Empty from "./Empty"
-import * as Form from "./Form"
+import Empty from "./Empty"
+import Form from "./Form"
 import * as Image from "./Image"
-import * as Input from "./Input"
-import * as Label from "./Label"
+import Input from "./Input"
+import Label from "./Label"
 import * as Popper from "./Popper"
-import * as Portal from "./Portal"
-import * as Radio from "./Radio"
-import * as ScrollArea from "./ScrollArea"
-import * as Separator from "./Separator"
-import * as Slot from "./Slot"
-import * as Switch from "./Switch"
-import * as Typography from "./Typography"
-import * as VisuallyHidden from "./VisuallyHidden"
+import Portal from "./Portal"
+import Radio from "./Radio"
+import ScrollArea from "./ScrollArea"
+import Separator from "./Separator"
+import Slot from "./Slot"
+import Switch from "./Switch"
+import Typography from "./Typography"
+import VisuallyHidden from "./VisuallyHidden"
 
 import { createColors, THEME_DEFAULT, THEME_DARK } from "./themes"
 
-import styled, {
+import styled from "./css.setup"
+import {
   css,
   keyframes,
   globalCss,
@@ -39,9 +40,13 @@ import useIsInViewport from "./hooks/useInViewport"
 import useScrollLock from "./hooks/useLockScroll"
 import useToggle from "./hooks/useToggle"
 
-export default {
+import mergeRefs from "./utils/mergeRefs"
+import { composeRefs, useComposedRefs } from "./utils/composeRefs"
+import { createContext, useCreateContext } from "./utils/createContext"
+
+export {
   Alert,
-  BaseInput,
+  InputBase,
   Button,
   Checkbox,
   Collapsible,
@@ -70,6 +75,11 @@ export default {
   createTheme,
   darkTheme,
   defaultTheme,
+  mergeRefs,
+  composeRefs,
+  useComposedRefs,
+  createContext,
+  useCreateContext,
   createColors,
   useCallbackRef,
   useClickOutside,

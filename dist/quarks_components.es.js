@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import React, { useState, useEffect, useRef, forwardRef, Children, isValidElement, cloneElement, useLayoutEffect, useMemo } from "react";
+import React, { useState, useEffect, useRef, forwardRef, Children, isValidElement, cloneElement, useLayoutEffect, useMemo, useCallback } from "react";
 import setup from "quarks_css";
 import ReactDOM, { flushSync } from "react-dom";
 import { FocusScope } from "@radix-ui/react-focus-scope";
@@ -323,6 +323,7 @@ function useCreateContext(name, defaultValue) {
   }
   return [Provider, useContext];
 }
+const createContext = useCreateContext;
 const DEFAULT_EVENTS = ["mousedown", "touchstart"];
 function useClickOutside(ref, cb, ignore = [], events) {
   useEffect(() => {
@@ -391,11 +392,6 @@ function mergeProps(slotProps, childProps) {
   }
   return __spreadValues(__spreadValues({}, slotProps), overrideProps);
 }
-var index$i = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Slot
-});
 const Portal = forwardRef(function(_a, ref) {
   var _b = _a, { containerRef } = _b, props = __objRest(_b, ["containerRef"]);
   var _a2, _b2;
@@ -419,11 +415,6 @@ const StyledPortal = styled.div`
   z-index: $max;
   pointer-event: none;
 `;
-var index$h = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Portal
-});
 const VisuallyHidden = forwardRef(function(_c, ref) {
   var _d = _c, { preventEvents = true } = _d, props = __objRest(_d, ["preventEvents"]);
   return /* @__PURE__ */ React.createElement(Container, __spreadValues({
@@ -454,11 +445,6 @@ const Container = styled.span`
 		pointer-events: none;
 	}
 `;
-var index$g = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": VisuallyHidden
-});
 const [AlertProvider, useAlertContext] = useCreateContext("Alert");
 const Alert = forwardRef(function({
   open,
@@ -528,7 +514,7 @@ const Wrapper = styled(VisuallyHidden)`
     pointer-events: none;
   }
 `;
-var index$f = /* @__PURE__ */ Object.freeze({
+var index$3 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   Root: Alert,
@@ -626,11 +612,6 @@ const StyledInput = styled.input`
     padding: 0 !important;
   }
 `;
-var index$e = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": InputBase
-});
 const Button = forwardRef(function(_j, ref) {
   var _k = _j, {
     href,
@@ -788,11 +769,6 @@ const IconContainer$3 = styled.span`
     margin: $none;
   }
 `;
-var index$d = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Button
-});
 const ChecboxInput = forwardRef(function(_l, ref) {
   var _m = _l, {
     size = "s",
@@ -932,11 +908,6 @@ const IconRect = styled.rect`
     fill: var(--color);
   }
 `;
-var index$c = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": ChecboxInput
-});
 const [CollapsibleProvider, useCollapsibleContext] = useCreateContext("Collapsible");
 const Collapsible = forwardRef(function(_n, ref) {
   var _o = _n, {
@@ -1020,7 +991,7 @@ const StyledCollapsibleContent = styled.div`
     height: 0px;
   }
 `;
-var index$b = /* @__PURE__ */ Object.freeze({
+var index$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   Root: Collapsible,
@@ -1038,11 +1009,6 @@ const Empty = forwardRef(function(_s, ref) {
   }));
 });
 Empty.displayName = "Q-Empty";
-var index$a = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Empty
-});
 const Form = forwardRef(function(props, ref) {
   return /* @__PURE__ */ React.createElement(StyledForm, __spreadValues({
     ref
@@ -1053,11 +1019,6 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
 `;
-var index$9 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Form
-});
 function useCallbackRef(callback) {
   const callbackRef = useRef(callback);
   useEffect(() => {
@@ -1131,7 +1092,7 @@ const Fallback = forwardRef((_w, forwardedRef) => {
   })) : null;
 });
 Fallback.displayName = "Fallback";
-var index$8 = /* @__PURE__ */ Object.freeze({
+var index$1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   ImageContext,
@@ -1337,11 +1298,6 @@ const StyledBaseInput = styled(InputBase)`
     }
   }
 `;
-var index$7 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Input
-});
 const Label = forwardRef(function(_A, ref) {
   var _B = _A, { id, htmlFor, onClick } = _B, props = __objRest(_B, ["id", "htmlFor", "onClick"]);
   const target = useRef(null);
@@ -1375,11 +1331,6 @@ const SyledLabel = styled.span`
   font-weight: $medium;
   line-height: $button;
 `;
-var index$6 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Label
-});
 function useIsInViewport(ref) {
   const [isInViewport, setIsInViewport] = useState(false);
   useEffect(() => {
@@ -1541,7 +1492,7 @@ const PopperContent = forwardRef((_E, ref) => {
   }, props), popperScope)));
 });
 PopperContent.displayName = "Q-PopperContent";
-var index$5 = /* @__PURE__ */ Object.freeze({
+var index = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   Root: Popper,
@@ -1674,11 +1625,6 @@ const IconCircle$1 = styled.circle`
     fill: var(--color);
   }
 `;
-var index$4 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": RadioInput
-});
 const ScrollArea = forwardRef(function(_I, ref) {
   var _J = _I, { type = "scroll", scrollHideDelay } = _J, props = __objRest(_J, ["type", "scrollHideDelay"]);
   return /* @__PURE__ */ React.createElement(StyledScrollArea, {
@@ -1744,11 +1690,6 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar)`
     height: 10px;
   }
 `;
-var index$3 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": ScrollArea
-});
 const ORIENTATIONS = ["horizontal", "vertical"];
 const Separator = forwardRef(function(_K, ref) {
   var _L = _K, { orientation, color = "gray50" } = _L, props = __objRest(_L, ["orientation", "color"]);
@@ -1780,11 +1721,6 @@ const StyledSeparator = styled.div`
 		margin: 0 $m;
 	}
 `;
-var index$2 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Separator
-});
 const SwitchInput = forwardRef(function(_M, ref) {
   var _N = _M, {
     size = "s",
@@ -1944,11 +1880,6 @@ const IconCircle = styled.circle`
     fill: var(--color);
   }
 `;
-var index$1 = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": SwitchInput
-});
 const Typography = forwardRef(function(_O, ref) {
   var _P = _O, { variant = "p", color = "black" } = _P, props = __objRest(_P, ["variant", "color"]);
   return /* @__PURE__ */ React.createElement(StyledTypography, __spreadValues({
@@ -2045,11 +1976,6 @@ const StyledTypography = styled.p`
     line-height: $regular;
   }
 `;
-var index = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module",
-  "default": Typography
-});
 function getAutoHeightDuration(height) {
   if (!height || typeof height === "string") {
     return 0;
@@ -2148,4 +2074,10 @@ function useCollapse({
   }
   return getCollapseProps;
 }
-export { index$f as Alert, index$e as BaseInput, index$d as Button, index$c as Checkbox, index$b as Collapsible, index$a as Empty, index$9 as Form, index$8 as Image, index$7 as Input, index$6 as Label, index$5 as Popper, index$h as Portal, index$4 as Radio, index$3 as ScrollArea, index$2 as Separator, index$i as Slot, index$1 as Switch, THEME_DARK, THEME_DEFAULT, index as Typography, index$g as VisuallyHidden, applyTheme, createColors, createTheme, css, darkTheme, defaultTheme, getCssText, globalCss, keyframes, styled, useCallbackRef, useClickOutside, useCollapse, useImageLoadingStatus, useIsInViewport, useScrollLock, useToggle };
+function composeRefs(...refs) {
+  return (node) => refs.forEach((ref) => ref.current = ref(node) || node);
+}
+function useComposedRefs(...refs) {
+  return useCallback(composeRefs(...refs), refs);
+}
+export { index$3 as Alert, Button, ChecboxInput as Checkbox, index$2 as Collapsible, Empty, Form, index$1 as Image, Input, InputBase, Label, index as Popper, Portal, RadioInput as Radio, ScrollArea, Separator, Slot, SwitchInput as Switch, THEME_DARK, THEME_DEFAULT, Typography, VisuallyHidden, applyTheme, composeRefs, createColors, createContext, createTheme, css, darkTheme, defaultTheme, getCssText, globalCss, keyframes, mergeRefs, styled, useCallbackRef, useClickOutside, useCollapse, useComposedRefs, useCreateContext, useImageLoadingStatus, useIsInViewport, useScrollLock, useToggle };

@@ -199,15 +199,15 @@ function useToggle({
 } = {}) {
   const [on, setOn] = useState(propOn != null && onChange ? propOn : defaultOn);
   useEffect(() => {
-    if (propOn && !onChange) {
+    if (propOn !== null && !onChange) {
       console.warn("on value was provided without an onChange handler");
     }
   }, [propOn, onChange]);
   const toggle = () => {
-    !readOnly ? onChange && propOn ? onChange(!on) : setOn(!on) : null;
+    !readOnly ? onChange && propOn !== null ? onChange(!on) : setOn(!on) : null;
   };
   const set = (val) => {
-    !readOnly ? onChange && propOn ? onChange(val) : setOn(val) : null;
+    !readOnly ? onChange && propOn !== null ? onChange(val) : setOn(val) : null;
   };
   return {
     on,
@@ -1193,7 +1193,7 @@ const StyledInputContainer = styled.button`
 
 	height: 33px;
 	min-width: $5;
-	border-radius: $3;
+	border-radius: $2;
 	background-color: var(--color);
 
 	cursor: text;

@@ -435,9 +435,9 @@ postcss@^8.4.6:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-quarks_css@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/quarks_css/-/quarks_css-0.0.1.tgz#55d257ad57133eb584e152f866f19b1640d268db"
+quarks_css@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/quarks_css/-/quarks_css-0.1.5.tgz#51deeb2e5226ead04aac0abe50694b36de3e4b42"
   dependencies:
     "@use-gesture/react" "^10.2.6"
     lodash.throttle "^4.1.1"

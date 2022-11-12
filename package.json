@@ -1,6 +1,6 @@
 {
   "name": "quarks_components",
-  "version": "0.2.1",
+  "version": "0.3.3",
   "author": "@ak",
   "license": "MIT",
   "description": "another styled library",
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "quarks_css": "^0.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.5.5",
@@ -25,7 +26,6 @@
     "@radix-ui/react-focus-scope": "^0.1.1",
     "@radix-ui/react-popper": "^0.1.1",
     "@radix-ui/react-scroll-area": "^0.1.1",
-    "observe-element-in-viewport": "^0.0.15",
-    "quarks_components": "^0.0.1"
+    "observe-element-in-viewport": "^0.0.15"
   }
 }

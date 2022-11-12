@@ -116,7 +116,7 @@ const StyledInputContainer = styled.button`
 
 	height: 33px;
 	min-width: $5;
-	border-radius: $3;
+	border-radius: $2;
 	background-color: var(--color);
 
 	cursor: text;

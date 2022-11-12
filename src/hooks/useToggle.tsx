@@ -9,17 +9,25 @@ export default function useToggle({
   const [on, setOn] = useState(propOn != null && onChange ? propOn : defaultOn)
 
   useEffect(() => {
-    if (propOn && !onChange) {
+    if (propOn !== null && !onChange) {
       console.warn("on value was provided without an onChange handler")
     }
   }, [propOn, onChange])
 
   const toggle = () => {
-    !readOnly ? (onChange && propOn ? onChange(!on) : setOn(!on)) : null
+    !readOnly
+      ? onChange && propOn !== null
+        ? onChange(!on)
+        : setOn(!on)
+      : null
   }
 
   const set = (val: boolean) => {
-    !readOnly ? (onChange && propOn ? onChange(val) : setOn(val)) : null
+    !readOnly
+      ? onChange && propOn !== null
+        ? onChange(val)
+        : setOn(val)
+      : null
   }
 
   return {

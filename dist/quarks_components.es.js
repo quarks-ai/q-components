@@ -197,17 +197,20 @@ function useToggle({
   defaultOn = false,
   readOnly = false
 } = {}) {
-  const [on, setOn] = useState(propOn != null && onChange ? propOn : defaultOn);
+  const [on, setOn] = useState(propOn != null ? propOn : defaultOn);
   useEffect(() => {
-    if (propOn !== null && !onChange) {
-      console.warn("on value was provided without an onChange handler");
-    }
   }, [propOn, onChange]);
   const toggle = () => {
-    !readOnly ? onChange && propOn !== null ? onChange(!on) : setOn(!on) : null;
+    if (!readOnly) {
+      onChange == null ? void 0 : onChange(!on);
+      setOn(!on);
+    }
   };
   const set = (val) => {
-    !readOnly ? onChange && propOn !== null ? onChange(val) : setOn(val) : null;
+    if (!readOnly) {
+      onChange == null ? void 0 : onChange(val);
+      setOn(val);
+    }
   };
   return {
     on,
@@ -707,7 +710,7 @@ const StyledButton = styled.button`
 	$props.iconOnly {
 		min-width: auto;
 		width: 33px;
-		border-radius: $4;
+		border-radius: $2;
 		padding: $none;
 
 		$props.size === "s" {

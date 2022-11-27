@@ -125,7 +125,7 @@ const StyledButton = styled.button`
 	$props.iconOnly {
 		min-width: auto;
 		width: 33px;
-		border-radius: $4;
+		border-radius: $2;
 		padding: $none;
 
 		$props.size === "s" {
